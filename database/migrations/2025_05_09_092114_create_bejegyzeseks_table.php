@@ -25,7 +25,7 @@ return new class extends Migration
                 'osztaly_nev' => '10A',
             ],
             [
-                'tevekenyseg_id'=>2,
+                'tevekenyseg_id'=>1,
                 'osztaly_nev' => '7B',
             ],
             [

@@ -13,7 +13,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('tevekenysegs', function (Blueprint $table) {
-            $table->id('tevekenyseg_id');
+            $table->bigIncrements('tevekenyseg_id');
             $table->string('tevekenyseg_nev');
             $table->integer('pontszam');
             $table->timestamps();
