@@ -39,9 +39,11 @@ class BejegyzesekController extends Controller
 
     public function osztalySzerint($osztaly_nev)
     {
-        $bejegyzesek = Bejegyzesek::with('tevekenyseg')->where('osztaly_nev', $osztaly_nev)->get();
+        $bejegyzesek = Bejegyzesek::with(['tevekenyseg','osztaly'])->where('osztaly_nev', $osztaly_nev)->get();
         return response()->json($bejegyzesek);
     }
+    
+
 
     /* public function osztalySzerint($osztaly_nev)
         {
