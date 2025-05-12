@@ -9,17 +9,21 @@ use Illuminate\Support\Facades\DB;
 class BejegyzesekController extends Controller
 {
     public function index()
-    {
-        $bejegyzesek = Bejegyzesek::with('tevekenyseg:tevekenyseg_id,tevekenyseg_nev,pontszam')->get()
-            ->map(function ($bejegyzes) {
-                return [
-                    'id' => $bejegyzes->id,
-                    'tevekenyseg_nev' => $bejegyzes->tevekenyseg->tevekenyseg_nev ?? null,
-                    'pontszam' => $bejegyzes->tevekenyseg->pontszam ?? null,
-                ];
-            });
-        return response()->json($bejegyzesek);
-    }
+{
+    $bejegyzesek = Bejegyzesek::with('tevekenyseg')->get()
+        ->map(function ($bejegyzes) {
+            return [
+                'id' => $bejegyzes->id,
+                'tevekenyseg_nev' => $bejegyzes->tevekenyseg->tevekenyseg_nev, // Ensure this field is present
+                'pontszam' => $bejegyzes->tevekenyseg->pontszam, // Same here
+                'osztaly_nev' => $bejegyzes->osztaly_nev // Add this field if needed
+            ];
+        });
+
+    return response()->json($bejegyzesek);
+}
+
+    
 
 
     /* public function index()
